@@ -13,10 +13,11 @@ The respective image is at [chbrandt/nextcloud](https://hub.docker.com/repositor
 ### Examples
 
 ```bash
-$ docker run -it --rm \
-        -v $PWD/nextcloud:/sourcedir \
-        chbrandt/nextcloud \
-        nextcloudcmd -u <user> -p <password> /sourcedir https://host.domain/remote.php/webdav/etc
+$ docker run -it --rm                        \
+        -v /tmp/nextcloud/etc:/sourcedir     \
+        chbrandt/nextcloud                   \
+        nextcloudcmd -u <user> -p <password> \
+        /sourcedir https://host.domain/remote.php/webdav/etc
 ```
 
 /.\
