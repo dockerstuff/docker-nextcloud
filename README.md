@@ -20,10 +20,10 @@ In the next example, I'm going to mount/bind my filesystem's "`/data/project-X`"
 and use this directory in the command-line:
 
 ```bash
-$ TMP_DIR='/data'
-$ docker run -it --rm -v /data/project-X:$TMP_DIR chbrandt/nextcloud \
-        nextcloudcmd -u <username> -p <password> $TMP_DIR https://hostname/remote.php/webdav/project-X
-```
+$ LOCAL_PATH='/data/planmap'
+$ CLOUD_PATH='DATA'
+$ docker run -it --rm -v $LOCAL_PATH:/tmp/bla chbrandt/nextcloud \
+        nextcloudcmd -u <username> -p <password> /tmp/bla https://cloud.planmap.eu/remote.php/webdav/$CLOUD_PATH```
 
 Notes:
 * `<username>` and `<password>` are given in plain text (eg, 'carlos' and `123456`);
