@@ -20,7 +20,7 @@ In the next example, I'm going to mount/bind my filesystem's "`/data/project-X`"
 and use this directory in the command-line:
 
 ```bash
-# TMP_DIR='/data'
+$ TMP_DIR='/data'
 $ docker run -it --rm -v /data/project-X:$TMP_DIR chbrandt/nextcloud \
         nextcloudcmd -u <username> -p <password> $TMP_DIR https://hostname/remote.php/webdav/project-X
 ```
