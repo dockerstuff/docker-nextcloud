@@ -10,15 +10,25 @@ For the client docs about command-line use, make sure to check:
 ## Docker image
 The respective image is at [chbrandt/nextcloud](https://hub.docker.com/repository/docker/chbrandt/nextcloud).
 
-### Examples
+### How to
+
+The command-line is very simple, it is `nextcloudcmmd` inside docker, everything the same. Because it is inside
+a (docker) container, you have to bind a local system directory where you want the files (from your nextcloud/webdav)
+to be downloaded-to and/or uploaded-from.
+
+In the next example, I'm going to mount/bind my filesystem's "`/data/project-X`" directory to the container's "`/data`",
+and use this directory in the command-line:
 
 ```bash
-$ docker run -it --rm                        \
-        -v /tmp/nextcloud/etc:/sourcedir     \
-        chbrandt/nextcloud                   \
-        nextcloudcmd -u <user> -p <password> \
-        /sourcedir https://host.domain/remote.php/webdav/etc
+$ docker run -it --rm -v /data/project-X:/data chbrandt/nextcloud \
+        nextcloudcmd -u <username> -p <password> /data https://hostname/remote.php/webdav/project-X
 ```
+
+Notes:
+* `<username>` and `<password>` are given in plain text (eg, 'carlos' and `123456`);
+* `/data` is jjust a proxy-directory, you can name however you want;
+* `-it --rm` are also optional, if you are not sure what they mean, leave them there.
+
 
 /.\
 
