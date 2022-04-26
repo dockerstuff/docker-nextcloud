@@ -20,13 +20,14 @@ In the next example, I'm going to mount/bind my filesystem's "`/data/project-X`"
 and use this directory in the command-line:
 
 ```bash
-$ docker run -it --rm -v /data/project-X:/data chbrandt/nextcloud \
-        nextcloudcmd -u <username> -p <password> /data https://hostname/remote.php/webdav/project-X
+# TMP_DIR='/data'
+$ docker run -it --rm -v /data/project-X:$TMP_DIR chbrandt/nextcloud \
+        nextcloudcmd -u <username> -p <password> $TMP_DIR https://hostname/remote.php/webdav/project-X
 ```
 
 Notes:
 * `<username>` and `<password>` are given in plain text (eg, 'carlos' and `123456`);
-* `/data` is jjust a proxy-directory, you can name however you want;
+* `/data` (TMP_DIR) is just a proxy-directory, you can name however you want;
 * `-it --rm` are also optional, if you are not sure what they mean, leave them there.
 
 
